@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Sumanth Singuluri - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .animated-gradient-bg, .animated-gradient-bg-light, .animated-gradient-bg-white {
+            background-size: 180% 180%;
+            position: relative;
+            overflow: hidden;
+        }
+        .animated-gradient-bg {
+            background: linear-gradient(300deg, #f3e8ff, #ede9fe, #d1d5db);
+            animation: gradient-animation 18s ease infinite;
+        }
+        .animated-gradient-bg-light {
+            background: linear-gradient(300deg, #f9fafb, #f3e8ff, #f9fafb);
+            animation: gradient-animation-light 18s ease infinite;
+        }
+         .animated-gradient-bg-white {
+            background: linear-gradient(300deg, #ffffff, #f7f5ff, #ffffff);
+            animation: gradient-animation-white 18s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes gradient-animation-light {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+         @keyframes gradient-animation-white {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 4px;
+            background-color: #8b5cf6;
+            border-radius: 2px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-glow {
+            box-shadow: 0 0 100px 40px #d8b4fe;
+            animation: glow-pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes glow-pulse {
+            0% { transform: scale(1); box-shadow: 0 0 100px 40px #d8b4fe; opacity: 0.7; }
+            50% { transform: scale(1.1); box-shadow: 0 0 120px 50px #c4b5fd; opacity: 1; }
+            100% { transform: scale(1); box-shadow: 0 0 100px 40px #d8b4fe; opacity: 0.7; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Fade in animations */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            animation: fadeInAnimation 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        .delay-5 { animation-delay: 1.0s; }
+
+        /* Floating Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, 0.2);
+            animation: float 20s infinite ease-in-out;
+        }
+        .orb-1 { width: 200px; height: 200px; top: 10%; left: 5%; animation-duration: 25s; }
+        .orb-2 { width: 100px; height: 100px; top: 20%; right: 10%; animation-duration: 22s; animation-delay: 2s;}
+        .orb-3 { width: 50px; height: 50px; bottom: 15%; left: 25%; animation-duration: 18s; animation-delay: 4s;}
+        .orb-4 { width: 150px; height: 150px; bottom: 5%; right: 20%; animation-duration: 28s; animation-delay: 1s;}
+
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid #d1fae5;
+            background-color: #ecfdf5;
+            color: #065f46;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .status-dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: #10b981;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Button Shimmer Effect */
+        .shimmer-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-btn:hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+        
+        /* Education Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        .timeline-item:last-child {
+            border-left: 2px solid transparent;
+            padding-bottom: 0;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: -1.1rem;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 9999px;
+            background-color: #fff;
+            border: 2px solid #8b5cf6;
+        }
+
+        /* Service Card & Skill Card*/
+        .service-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.03);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            border: 1px solid #e5e7eb;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.08);
+            border-color: #c4b5fd;
+        }
+        .service-icon {
+            background-color: #ede9fe;
+            color: #8b5cf6;
+            border-radius: 0.5rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        .service-card:hover .service-icon {
+             background-color: #8b5cf6;
+            color: #fff;
+            transform: rotate(-15deg) scale(1.1);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #4b5563;
+        }
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(45deg, #ec4899, #f87171);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transform: rotate(10deg);
+        }
+
+        /* Portfolio Horizontal Scroll */
+        .horizontal-scroll-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .horizontal-scroll-wrapper::-webkit-scrollbar {
+           display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+        }
+        .project-card-container {
+            flex: 0 0 90%;
+            margin-right: 1.5rem;
+            max-width: 400px;
+        }
+        @media (min-width: 768px) {
+            .project-card-container {
+                flex: 0 0 45%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .project-card-container {
+                flex: 0 0 30%;
+            }
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.03);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+         .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.15), 0 10px 10px -5px rgba(139, 92, 246, 0.08);
+        }
+
+        /* Contact Card */
+        .contact-card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.1), 0 4px 6px -2px rgba(139, 92, 246, 0.05);
+            border-color: #c4b5fd;
+        }
+        .contact-card .arrow-icon {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            margin-left: auto;
+        }
+        .contact-card:hover .arrow-icon {
+            opacity: 1;
+        }
+        
+        /* Section Title Animation */
+        .animated-title span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in-section.is-visible .animated-title span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Gemini API feature styles */
+        .gemini-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+            background-color: #ede9fe; color: #5b21b6; font-size: 0.75rem; font-weight: 600;
+            padding: 0.25rem 0.75rem; border-radius: 9999px; border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+        .gemini-btn:hover { background-color: #ddd6fe; border-color: #c4b5fd; }
+        
+        .loader {
+            width: 16px; height: 16px; border: 2px solid #c4b5fd;
+            border-bottom-color: #5b21b6; border-radius: 50%;
+            display: inline-block; box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" class="text-2xl font-bold text-gray-800">Sumanth.dev</a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-purple-600 transition-colors">About</a>
+                    <a href="#skills" class="text-gray-600 hover:text-purple-600 transition-colors">Skills</a>
+                    <a href="#services" class="text-gray-600 hover:text-purple-600 transition-colors">Services</a>
+                    <a href="#portfolio" class="text-gray-600 hover:text-purple-600 transition-colors">Portfolio</a>
+                    <a href="#contact" class="text-gray-600 hover:text-purple-600 transition-colors">Contact</a>
+                    <a href="#contact" class="bg-purple-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 shadow-md">Hire Me</a>
+                </nav>
+                <button id="mobile-menu-btn" class="md:hidden"> <i data-lucide="menu"></i> </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#about" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">About</a>
+            <a href="#skills" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Skills</a>
+            <a href="#services" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Services</a>
+            <a href="#portfolio" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Portfolio</a>
+            <a href="#contact" class="block py-2 px-6 text-gray-600 hover:bg-gray-100">Contact</a>
+             <div class="px-6 py-4">
+                 <a href="#contact" class="block text-center w-full bg-purple-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 shadow-md">Hire Me</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="min-h-screen flex items-center pt-24 md:pt-0 animated-gradient-bg">
+            <div class="orb orb-1"></div> <div class="orb orb-2"></div> <div class="orb orb-3"></div> <div class="orb orb-4"></div>
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <div class="opacity-0 fade-in delay-1 mb-4">
+                            <div class="status-badge"> <span class="status-dot"></span> Available for opportunities </div>
+                        </div>
+                        <p class="text-lg text-gray-600 mb-2 opacity-0 fade-in delay-2">Hey, I'm Sai Sumanth Singuluri 👋</p>
+                        <h1 id="animated-heading" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight opacity-0 fade-in delay-3 h-auto md:h-28">
+                           <span id="role-text" class="text-gradient"></span>
+                        </h1>
+                         <p class="mt-4 text-md text-gray-600 max-w-xl mx-auto md:mx-0 italic opacity-0 fade-in delay-4"> "Passionate about building scalable, secure, and innovative solutions through technology.” </p>
+                        <div class="mt-8 flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4 opacity-0 fade-in delay-5">
+                            <a href="#contact" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 shadow-lg shimmer-btn">Hire Me</a>
+                            <a href="#portfolio" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg shimmer-btn">View Portfolio</a>
+                        </div>
+                        <div class="mt-8 flex justify-center md:justify-start items-center space-x-6 text-gray-500 opacity-0 fade-in delay-5">
+                            <a href="https://www.linkedin.com/in/sai-sumanth-singuluri-59188123b/" target="_blank" class="hover:text-purple-600 transition-colors"> <i data-lucide="linkedin" class="w-7 h-7"></i> </a>
+                            <a href="https://github.com/Sumanth9797" target="_blank" class="hover:text-purple-600 transition-colors"> <i data-lucide="github" class="w-7 h-7"></i> </a>
+                            <a href="https://www.instagram.com/sumanthuu._?igsh=NXVseWd4MHV1OHE=" target="_blank" class="hover:text-purple-600 transition-colors"> <i data-lucide="instagram" class="w-7 h-7"></i> </a>
+                            <div class="h-8 border-l border-gray-300"></div>
+                            <div class="flex space-x-6">
+                                <div class="text-center">
+                                    <p class="text-2xl font-bold text-gray-800 counter" data-target="10">0</p>
+                                    <p class="text-sm text-gray-500">Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center relative opacity-0 fade-in delay-2">
+                        <div class="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-8 border-white relative z-10 animate-float">
+                            <img src="https://i.postimg.cc/qByBgHjH/Whats-App-Image-2025-09-07-at-19-18-55-d85c0be0.jpg" alt="Sai Sumanth Singuluri" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 bg-purple-200 rounded-full hero-glow"></div>
+                    </div>
+                </div>
+            </div>
+            <a href="#about" class="scroll-indicator hidden md:block" aria-label="Scroll to about section"> <i data-lucide="arrow-down-circle" class="w-10 h-10 text-gray-600 hover:text-purple-600"></i> </a>
+        </section>
+
+        <!-- About and Education Section -->
+        <section id="about" class="py-24 animated-gradient-bg-light">
+            <div class="container mx-auto px-4 sm:px-6">
+                 <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in-section">
+                        <h2 class="text-4xl font-bold text-gray-900 mb-8 section-title animated-title" data-text="About Me"></h2>
+                        <p class="text-gray-600 mb-4 leading-relaxed"> Hello! I'm Sai Sumanth Singuluri, a passionate and results-driven Java Developer with a strong foundation in software development and full-stack web technologies. I thrive on solving complex problems and am always eager to learn new things. </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed"> My journey in technology is fueled by a curiosity for building scalable, secure, and innovative solutions. Whether it's designing clean web interfaces or developing robust backend systems, I am dedicated to delivering high-quality work. </p>
+                         <div class="flex space-x-4">
+                             <a href="#contact" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-transform transform hover:scale-105 shadow-lg">Hire Me</a>
+                             <a href="https://drive.google.com/file/d/15YJcDfHtAvNsQ6wLkIq5I6PIQUtdWCG6/view?usp=sharing" target="_blank" class="bg-white text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg">Download CV</a>
+                         </div>
+                    </div>
+                    <div class="fade-in-section">
+                         <h2 class="text-4xl font-bold text-gray-900 mb-12 section-title animated-title" data-text="My Education"></h2>
+                         <div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon text-purple-600"> <i data-lucide="graduation-cap"></i> </div>
+                                <p class="font-semibold text-gray-500">2021 - 2025</p>
+                                <h3 class="text-xl font-bold text-gray-800 mt-1">B.Tech in CSE</h3>
+                                <p class="text-gray-600">Vel Tech University</p>
+                                <p class="text-sm text-gray-500 mt-1">GPA: 7.54</p>
+                            </div>
+                            <div class="timeline-item">
+                                 <div class="timeline-icon text-purple-600"> <i data-lucide="award"></i> </div>
+                                <p class="font-semibold text-gray-500">2019 - 2021</p>
+                                <h3 class="text-xl font-bold text-gray-800 mt-1">Intermediate</h3>
+                                <p class="text-gray-600">Tirumala Educational Institutions</p>
+                                <p class="text-sm text-gray-500 mt-1">GPA: 7.98</p>
+                            </div>
+                            <div class="timeline-item">
+                                 <div class="timeline-icon text-purple-600"> <i data-lucide="book-marked"></i> </div>
+                                <p class="font-semibold text-gray-500">2018 - 2019</p>
+                                <h3 class="text-xl font-bold text-gray-800 mt-1">Secondary School</h3>
+                                <p class="text-gray-600">St. Ann’s Educational Institutions</p>
+                                <p class="text-sm text-gray-500 mt-1">GPA: 8.75</p>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 animated-gradient-bg-white fade-in-section">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 section-title animated-title" data-text="My Skills"></h2>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto">A breakdown of the technologies and methodologies I specialize in.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Category 1: Programming & Databases -->
+                    <div class="service-card group" style="transition-delay: 100ms;">
+                        <div class="service-icon"><i data-lucide="database" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Programming & Databases</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Java</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Python</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> SQL</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Spring Boot</p>
+                        </div>
+                    </div>
+        
+                    <!-- Category 2: Web Development -->
+                    <div class="service-card group" style="transition-delay: 200ms;">
+                         <div class="service-icon"><i data-lucide="globe" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Web Development</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> HTML</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> CSS</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> JavaScript</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Full Stack</p>
+                        </div>
+                    </div>
+        
+                    <!-- Category 3: Specialized Areas -->
+                    <div class="service-card group" style="transition-delay: 300ms;">
+                         <div class="service-icon"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Specialized Areas</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Cybersecurity</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Blockchain</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> REST APIs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 animated-gradient-bg-light fade-in-section">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 section-title animated-title" data-text="What I Offer"></h2>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto">I can help you with a variety of technology needs, from web design to security.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="service-card group">
+                        <div class="service-icon"><i data-lucide="layout-template" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Responsive Layouts</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Modern UI/UX</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Interactive Elements</p>
+                        </div>
+                    </div>
+                    <div class="service-card group relative">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="service-icon"><i data-lucide="code-2" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Software Development</h3>
+                        <div class="space-y-3 text-left">
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Scalable Java Apps</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Spring Boot Backend</p>
+                            <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Efficient Code</p>
+                        </div>
+                    </div>
+                    <div class="service-card group">
+                        <div class="service-icon"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Cybersecurity</h3>
+                        <div class="space-y-3 text-left">
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Secure Systems</p>
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> App Protection</p>
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Best Practices</p>
+                        </div>
+                    </div>
+                    <div class="service-card group">
+                        <div class="service-icon"><i data-lucide="layers" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold mb-4">Full Stack Development</h3>
+                         <div class="space-y-3 text-left">
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> End-to-End Solutions</p>
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Frontend & Backend</p>
+                           <p class="feature-item"><i data-lucide="check-circle-2" class="w-5 h-5 text-green-500"></i> Database Integration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 text-center bg-white p-6 sm:p-8 rounded-lg shadow-lg border border-gray-200 fade-in-section">
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900">Have a custom project in mind?</h3>
+                    <p class="text-gray-600 mt-2 mb-6">Let's talk about your ideas and how I can help bring them to life.</p>
+                    <a href="#contact" class="bg-purple-600 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-purple-700 transition-transform transform hover:scale-105 shadow-lg shimmer-btn"> Request a Free Consultation </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-24 animated-gradient-bg-white fade-in-section">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 section-title animated-title" data-text="My Portfolio"></h2>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto">A selection of projects I've worked on, showcasing the results and impact.</p>
+                </div>
+            </div>
+            <div class="container mx-auto px-4 sm:px-6">
+                 <div class="relative group">
+                    <div id="portfolio-scroll" class="horizontal-scroll-wrapper">
+                        <div class="project-card-container">
+                            <div class="project-card">
+                                <div class="p-6 flex flex-col justify-between h-full">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="text-2xl font-bold mb-2 project-title">Banking Management System</h3>
+                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">Completed</span>
+                                        </div>
+                                        <p class="text-gray-600 mb-4 project-description">A robust system to efficiently manage bank accounts, transactions, and customer details.</p>
+                                        <div class="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+                                            <div class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1.5"></i> Sep 2023 - Dec 2023</div>
+                                            <div class="flex items-center"><i data-lucide="users" class="w-4 h-4 mr-1.5"></i> Solo Project</div>
+                                        </div>
+                                        <div class="flex flex-wrap gap-2 mb-4 project-tech">
+                                            <span class="bg-blue-100 text-blue-800 px-2 py-1 text-sm rounded-full">Java</span>
+                                            <span class="bg-orange-100 text-orange-800 px-2 py-1 text-sm rounded-full">SQL</span>
+                                            <span class="bg-purple-100 text-purple-800 px-2 py-1 text-sm rounded-full">HTML/CSS</span>
+                                        </div>
+                                        <div class="border-t border-gray-200 pt-4 mt-4">
+                                            <h4 class="font-semibold mb-2">Key Performance Indicators:</h4>
+                                            <div class="space-y-2 text-sm">
+                                                <p class="flex items-center text-gray-700"><i data-lucide="zap" class="w-4 h-4 mr-2 text-yellow-500"></i> 25% faster transaction processing</p>
+                                                <p class="flex items-center text-gray-700"><i data-lucide="shield-check" class="w-4 h-4 mr-2 text-green-500"></i> Improved data security & accessibility</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pt-6 space-y-2">
+                                        <button class="w-full gemini-btn regenerate-description-btn"> ✨ Regenerate with AI </button>
+                                        <a href="https://github.com/Sumanth9797/" target="_blank" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center space-x-2"> <i data-lucide="github" class="w-5 h-5"></i> <span>View Code</span> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="project-card-container">
+                            <div class="project-card">
+                                <div class="p-6 flex flex-col justify-between h-full">
+                                    <div>
+                                        <div class="flex justify-between items-start">
+                                            <h3 class="text-2xl font-bold mb-2 project-title">Fake Product Detection</h3>
+                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">Completed</span>
+                                        </div>
+                                        <p class="text-gray-600 mb-4 project-description">A static website with blockchain integration for tamper-proof supply chain transparency.</p>
+                                         <div class="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+                                            <div class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1.5"></i> Jan 2024 - May 2024</div>
+                                            <div class="flex items-center"><i data-lucide="users" class="w-4 h-4 mr-1.5"></i> Team Project</div>
+                                        </div>
+                                        <div class="flex flex-wrap gap-2 mb-4 project-tech">
+                                            <span class="bg-gray-200 text-gray-800 px-2 py-1 text-sm rounded-full">Blockchain</span>
+                                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 text-sm rounded-full">Static Site</span>
+                                        </div>
+                                         <div class="border-t border-gray-200 pt-4 mt-4">
+                                            <h4 class="font-semibold mb-2">Project Metrics:</h4>
+                                            <div class="space-y-2 text-sm">
+                                                <p class="flex items-center text-gray-700"><i data-lucide="lock" class="w-4 h-4 mr-2 text-blue-500"></i> 100% tamper-proof record keeping</p>
+                                                <p class="flex items-center text-gray-700"><i data-lucide="users" class="w-4 h-4 mr-2 text-purple-500"></i> Enhanced consumer trust & verification</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pt-6 space-y-2">
+                                       <button class="w-full gemini-btn regenerate-description-btn"> ✨ Regenerate with AI </button>
+                                       <a href="https://github.com/Sumanth9797/" target="_blank" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center space-x-2"> <i data-lucide="github" class="w-5 h-5"></i> <span>View Code</span> </a>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card-container">
+                            <div class="project-card">
+                                <div class="p-6 flex flex-col justify-between h-full">
+                                    <div>
+                                   <div class="flex justify-between items-start">
+                                        <h3 class="text-2xl font-bold mb-2 project-title">Securing Patient Data</h3>
+                                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full whitespace-nowrap">Completed</span>
+                                    </div>
+                                    <p class="text-gray-600 mb-4 project-description">A decentralized app using Solidity, IPFS, and Web3 for HIPAA/GDPR alignment.</p>
+                                     <div class="flex items-center text-sm text-gray-500 mb-4 space-x-4">
+                                        <div class="flex items-center"><i data-lucide="calendar" class="w-4 h-4 mr-1.5"></i> Jan 2025 - May 2025</div>
+                                        <div class="flex items-center"><i data-lucide="user" class="w-4 h-4 mr-1.5"></i> Solo Project</div>
+                                    </div>
+                                    <div class="flex flex-wrap gap-2 mb-4 project-tech">
+                                        <span class="bg-gray-700 text-white px-2 py-1 text-sm rounded-full">Solidity</span>
+                                            <span class="bg-sky-100 text-sky-800 px-2 py-1 text-sm rounded-full">IPFS</span>
+                                            <span class="bg-pink-100 text-pink-800 px-2 py-1 text-sm rounded-full">Web3</span>
+                                        </div>
+                                         <div class="border-t border-gray-200 pt-4 mt-4">
+                                            <h4 class="font-semibold mb-2">User Impact Goals:</h4>
+                                            <div class="space-y-2 text-sm">
+                                                <p class="flex items-center text-gray-700"><i data-lucide="file-shield" class="w-4 h-4 mr-2 text-red-500"></i> HIPAA/GDPR-aligned data control</p>
+                                                <p class="flex items-center text-gray-700"><i data-lucide="key" class="w-4 h-4 mr-2 text-indigo-500"></i> Decentralized & secure patient access</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pt-6 space-y-2">
+                                       <button class="w-full gemini-btn regenerate-description-btn"> ✨ Regenerate with AI </button>
+                                       <a href="https://github.com/Sumanth9797/" target="_blank" class="w-full bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-colors flex items-center justify-center space-x-2"> <i data-lucide="github" class="w-5 h-5"></i> <span>View Code</span> </a>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="scroll-left" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hover:bg-white disabled:opacity-0 disabled:cursor-not-allowed md:block hidden"> <i data-lucide="chevron-left" class="w-6 h-6 text-gray-800"></i> </button>
+                    <button id="scroll-right" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hover:bg-white disabled:opacity-0 disabled:cursor-not-allowed md:block hidden"> <i data-lucide="chevron-right" class="w-6 h-6 text-gray-800"></i> </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 animated-gradient-bg-light fade-in-section">
+            <div class="container mx-auto px-4 sm:px-6">
+                 <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 section-title animated-title" data-text="Get In Touch"></h2>
+                    <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Have a project in mind or just want to say hi? Feel free to reach out!</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div class="space-y-6">
+                            <a href="mailto:saisumanthsingulri@gmail.com" class="contact-card group">
+                                <div class="bg-purple-100 text-purple-600 p-3 rounded-lg"><i data-lucide="mail"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Email</h3>
+                                    <p class="text-gray-600 group-hover:text-purple-600 transition-colors">saisumanthsingulri@gmail.com</p>
+                                </div>
+                                <i data-lucide="arrow-right" class="w-5 h-5 text-purple-600 arrow-icon"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sai-sumanth-singuluri-59188123b/" target="_blank" class="contact-card group">
+                                <div class="bg-purple-100 text-purple-600 p-3 rounded-lg"><i data-lucide="linkedin"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">LinkedIn</h3>
+                                    <p class="text-gray-600 group-hover:text-purple-600 transition-colors">Sai Sumanth Singuluri</p>
+                                </div>
+                                <i data-lucide="arrow-right" class="w-5 h-5 text-purple-600 arrow-icon"></i>
+                            </a>
+                             <a href="https://github.com/Sumanth9797" target="_blank" class="contact-card group">
+                                <div class="bg-purple-100 text-purple-600 p-3 rounded-lg"><i data-lucide="github"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">GitHub</h3>
+                                    <p class="text-gray-600 group-hover:text-purple-600 transition-colors">Sumanth9797</p>
+                                </div>
+                                <i data-lucide="arrow-right" class="w-5 h-5 text-purple-600 arrow-icon"></i>
+                            </a>
+                             <a href="https://www.instagram.com/sumanthuu._?igsh=NXVseWd4MHV1OHE=" target="_blank" class="contact-card group">
+                                <div class="bg-purple-100 text-purple-600 p-3 rounded-lg"><i data-lucide="instagram"></i></div>
+                                <div>
+                                    <h3 class="font-semibold text-lg">Instagram</h3>
+                                    <p class="text-gray-600 group-hover:text-purple-600 transition-colors">sumanthuu._</p>
+                                </div>
+                                <i data-lucide="arrow-right" class="w-5 h-5 text-purple-600 arrow-icon"></i>
+                            </a>
+                        </div>
+                        <form id="contact-form" class="space-y-6 bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                                <input type="text" id="name" name="from_name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" required>
+                            </div>
+                             <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                                <input type="email" id="email" name="from_email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" required>
+                            </div>
+                             <div>
+                                <div class="flex justify-between items-center">
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <button type="button" id="gemini-message-btn" class="gemini-btn"> ✨ Help me write </button>
+                                </div>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500" required></textarea>
+                            </div>
+                            <div>
+                               <button type="submit" id="submit-btn" class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-colors shadow-lg shimmer-btn"> Send Message </button>
+                               <p id="form-status" class="text-center mt-4 text-sm"></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 pt-16 pb-12">
+            <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+                <div>
+                    <a href="#" class="text-3xl font-bold">Sumanth.dev</a>
+                    <p class="text-gray-400 mt-2">Java Developer & Web Designer.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                    <nav class="space-y-2">
+                        <a href="#about" class="block text-gray-400 hover:text-white transition-colors">About</a>
+                        <a href="#skills" class="block text-gray-400 hover:text-white transition-colors">Skills</a>
+                        <a href="#services" class="block text-gray-400 hover:text-white transition-colors">Services</a>
+                        <a href="#portfolio" class="block text-gray-400 hover:text-white transition-colors">Portfolio</a>
+                        <a href="#contact" class="block text-gray-400 hover:text-white transition-colors">Contact</a>
+                    </nav>
+                </div>
+                <div>
+                     <h3 class="font-bold text-lg mb-4">Connect With Me</h3>
+                     <div class="flex justify-center md:justify-start space-x-4">
+                         <a href="https://www.linkedin.com/in/sai-sumanth-singuluri-59188123b/" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                         <a href="https://github.com/Sumanth9797" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="github" class="w-6 h-6"></i></a>
+                         <a href="https://www.instagram.com/sumanthuu._?igsh=NXVseWd4MHV1OHE=" target="_blank" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                         <a href="mailto:saisumanthsingulri@gmail.com" class="text-gray-400 hover:text-white transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                     </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500">
+                 <p>&copy; 2024 Sai Sumanth Singuluri. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // --- Gemini API Configuration ---
+        const API_KEY = ""; // Kept empty as per instructions
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${API_KEY}`;
+        
+        async function callGeminiAPI(prompt) {
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                if (!response.ok) { throw new Error(`API call failed with status: ${response.status}`); }
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    return candidate.content.parts[0].text.trim();
+                } else { return "Sorry, I couldn't generate a response. Please try again."; }
+            } catch (error) {
+                console.error("Gemini API call error:", error);
+                return "An error occurred while contacting the AI. Please check the console.";
+            }
+        }
+
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+        // Fade-in sections on scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+
+                    const skillTags = entry.target.querySelectorAll('.skill-tag');
+                    skillTags.forEach((tag, index) => {
+                        tag.style.transitionDelay = `${index * 100}ms`;
+                    });
+
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { sectionObserver.observe(section); });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- EmailJS Initialization ---
+            emailjs.init({ publicKey: 'dNCDgRbLU9WGW1ZnJ' });
+
+            document.querySelectorAll('.animated-title').forEach(title => {
+                const text = title.getAttribute('data-text');
+                if (!text) return;
+                title.textContent = '';
+                text.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.textContent = char;
+                    if (char === ' ') { span.style.width = '0.5em'; }
+                    span.style.transitionDelay = `${index * 50}ms`;
+                    title.appendChild(span);
+                });
+            });
+
+            // Typewriter effect for hero
+            const roles = ["Java Developer", "Web Designer", "Full Stack Developer", "Cybersecurity Enthusiast"];
+            const roleTextElement = document.getElementById('role-text');
+            const headingElement = document.getElementById('animated-heading');
+            if(roleTextElement && headingElement) {
+                let roleIndex = 0, charIndex = 0, isDeleting = false;
+                function typeHero() {
+                    const currentRole = roles[roleIndex];
+                    let displayText = currentRole.substring(0, charIndex);
+                    roleTextElement.innerHTML = displayText;
+                    roleTextElement.style.borderRight = '.15em solid #6d28d9';
+                    headingElement.classList.toggle('text-gradient', currentRole === "Java Developer");
+                    if (!isDeleting) {
+                        charIndex++;
+                        if (charIndex > currentRole.length) { setTimeout(() => { isDeleting = true; }, 2000); }
+                    } else {
+                        charIndex--;
+                        if (charIndex === 0) { isDeleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+                    }
+                    setTimeout(typeHero, isDeleting ? 75 : 150);
+                }
+                setTimeout(typeHero, 1500);
+            }
+
+            // Animated Counters
+            const counters = document.querySelectorAll('.counter');
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target, target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const updateCount = () => {
+                            const increment = target / 100;
+                            if (count < target) { 
+                                count += increment; 
+                                counter.innerText = Math.ceil(count); 
+                                requestAnimationFrame(updateCount); 
+                            } else { 
+                                counter.innerText = target + '+'; 
+                            }
+                        };
+                        updateCount();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(counter => { counterObserver.observe(counter); });
+
+            // Portfolio horizontal scroll
+            const scrollWrapper = document.getElementById('portfolio-scroll');
+            const scrollLeftBtn = document.getElementById('scroll-left');
+            const scrollRightBtn = document.getElementById('scroll-right');
+            if (scrollWrapper && scrollLeftBtn && scrollRightBtn) {
+                const checkScrollButtons = () => {
+                    if (scrollWrapper.scrollWidth > scrollWrapper.clientWidth) {
+                        const maxScrollLeft = scrollWrapper.scrollWidth - scrollWrapper.clientWidth;
+                        scrollLeftBtn.disabled = scrollWrapper.scrollLeft <= 0;
+                        scrollRightBtn.disabled = scrollWrapper.scrollLeft >= maxScrollLeft - 1;
+                    } else { 
+                        scrollLeftBtn.style.display = 'none'; 
+                        scrollRightBtn.style.display = 'none'; 
+                    }
+                };
+                const scrollAmount = () => scrollWrapper.querySelector('.project-card-container')?.offsetWidth || 300;
+                scrollRightBtn.addEventListener('click', () => { scrollWrapper.scrollLeft += scrollAmount(); });
+                scrollLeftBtn.addEventListener('click', () => { scrollWrapper.scrollLeft -= scrollAmount(); });
+                scrollWrapper.addEventListener('scroll', checkScrollButtons);
+                window.addEventListener('resize', checkScrollButtons);
+                checkScrollButtons();
+            }
+
+            // Gemini Feature: Contact Form Helper
+            const geminiMessageBtn = document.getElementById('gemini-message-btn');
+            const messageTextarea = document.getElementById('message');
+            if(geminiMessageBtn && messageTextarea) {
+                geminiMessageBtn.addEventListener('click', async () => {
+                    const userInput = messageTextarea.value;
+                    if (userInput.trim().length < 5) { alert("Please type a few words about what you want to say first."); return; }
+                    const originalBtnContent = geminiMessageBtn.innerHTML;
+                    geminiMessageBtn.innerHTML = '<span class="loader"></span> Writing...';
+                    geminiMessageBtn.disabled = true;
+                    const prompt = `Act as a professional assistant helping someone write a contact message to a developer named Sai Sumanth Singuluri. Expand on the user's initial idea into a polite, clear, and professional message. Keep it concise (2-4 sentences). User's idea: "${userInput}"`;
+                    const aiResponse = await callGeminiAPI(prompt);
+                    messageTextarea.value = aiResponse;
+                    geminiMessageBtn.innerHTML = originalBtnContent;
+                    geminiMessageBtn.disabled = false;
+                });
+            }
+
+             // EmailJS Form Submission
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const formStatus = document.getElementById('form-status');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                    formStatus.textContent = '';
+                    formStatus.classList.remove('text-green-600', 'text-red-600');
+                    // Note: EmailJS requires the 'name' attributes on inputs to match your template
+                    emailjs.sendForm('service_gg47cel', 'template_b9w9rf4', this)
+                        .then(() => {
+                            formStatus.textContent = 'Message sent successfully!';
+                            formStatus.classList.add('text-green-600');
+                            contactForm.reset();
+                        }, (error) => {
+                            formStatus.textContent = 'Failed to send message. Please try again.';
+                            formStatus.classList.add('text-red-600');
+                            console.log('FAILED...', error);
+                        })
+                        .finally(() => {
+                            submitBtn.textContent = originalBtnText;
+                            submitBtn.disabled = false;
+                        });
+                });
+            }
+
+            // Gemini Feature: Regenerate Project Descriptions
+            document.querySelectorAll('.regenerate-description-btn').forEach(button => {
+                button.addEventListener('click', async (e) => {
+                    const card = e.target.closest('.project-card');
+                    const title = card.querySelector('.project-title').textContent;
+                    const techSpans = card.querySelectorAll('.project-tech span');
+                    const descriptionP = card.querySelector('.project-description');
+                    const techList = Array.from(techSpans).map(span => span.textContent).join(', ');
+                    const originalBtnContent = button.innerHTML;
+                    button.innerHTML = '<span class="loader"></span> Regenerating...';
+                    button.disabled = true;
+                    const prompt = `Generate a new, engaging, one-paragraph portfolio project description (around 30-40 words). The project is called "${title}" and uses these technologies: ${techList}. Focus on the value and purpose of the project.`;
+                    const aiResponse = await callGeminiAPI(prompt);
+                    descriptionP.textContent = aiResponse;
+                    button.innerHTML = originalBtnContent;
+                    button.disabled = false;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
